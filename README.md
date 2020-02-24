@@ -1,31 +1,45 @@
-## Notas sobre Hugo
+## Notas sobre Hugo + Netlify
 
 #### Sites estáticos
 
-- O que é um site estático?
+- **O que são?**
 
-   Um site que não depende de processamento no servidor - é entregue pro navegador da pessoa usuária exatamente como está armazenado, em contraste a sites dinâmicos.
+   Um site estático não depende de processamento no servidor - é entregue pro navegador da pessoa usuária exatamente como está armazenado, em contraste a sites dinâmicos.
 
    É baseado principalmente em HTML (HyperText Markup Language), que é uma "linguagem de marcação".
 
    O documento HTML é interpretado pelo navegador, que o renderiza e exibe o conteúdo formatado.
 
-- Vantagens de usar: custo de hospedagem, performance, menos brechas de segurança
+- **Principais usos**
+ 
+   Site pessoal, blog, site institucional
 
-   Principais usos: site pessoal, blog, sites institucionais
+- **Exemplos**
 
-   Exemplos: Tableless, 1Password, Let's Encrypt, TreinaWeb Blog
+   [Tableless](https://tableless.com.br), [1Password](https://1password.com), [Let's Encrypt](https://letsencrypt.org), [TreinaWeb Blog](https://www.treinaweb.com.br/blog/)
 
-- Desvantagens de usar: pra cada atualização é necessário um novo deploy, não é ótimo pra atividades que envolvam buscas (portais e e-commerces), não é dinâmico
+- **Vantagens de usar**
+
+   - Custo de hospedagem (nenhum ou baixo)
+   - Performance
+   - Menos brechas de segurança
+
+- **Desvantagens de usar**
+
+   - Pra cada atualização é necessário um novo deploy
+   - Não é ótimo pra atividades que envolvam buscas (portais e e-commerces)
+   - Não é dinâmico
 
 #### Sobre o Hugo
 
-- Feito em Go, uma linguagem de programação desenvolvida pela Google
+- Feito em [Go](https://go.dev), uma linguagem de programação desenvolvida pela Google
 - Rápido
 - Simples de usar: com 4 comandos seu site está no ar
 - Tem temas prontos disponíveis em [themes.gohugo.io](http://themes.gohugo.io)
 
 #### Mão na massa
+
+- Nesse tutorial vamos usar [Hugo](https://gohugo.io) pra construir um site, [Netlify](https://www.netlify.com) pra publicá-lo, [Git](https://git-scm.com) para versionar o projeto e [GitHub](http://github.com) para hospedar o repositório remoto.
 
 1. Instalação
 
@@ -33,92 +47,125 @@
 
      🆘🆘🆘
 
-   - Mac OS ou Linux com Homebrew
+   - Mac OS
+   
+     Sugerimos que seja usado o [Homebrew](https://brew.sh)
 
-     `$ brew install hugo`
+     Comando para instalar com Homebrew: `$ brew install hugo`
+     
+   - Linux
+   
+     Use o package manager da sua distro/de sua preferência
 
 2. Checar versão
 
-   `$ hugo version`
+   - Digite o seguinte comando:
+     
+     `$ hugo version`
 
 3. Criar novo site
 
-   `$ hugo new site meusite` - na altura do repositório que você vai querer usar
+   - Na altura onde você quiser que seja criada a pasta com todo o projeto, digite o seguinte comando:
 
-   #### Congratulations!
+     `$ hugo new site meusite`
+     
+   - Se der certo, você deve receber a seguinte mensagem:
+     #### Congratulations! Your new Hugo site is created in <...>
 
-4. Escolher um tema
+4. Inicializar o repositório git
 
-   - Escolher no site: [themes.gohugo.io](http://themes.gohugo.io)
-   - Pra oficina, vamos usar o tema `Noteworthy`
+    - Na altura da pasta `meusite`, digite o seguinte comando:
+    
+      `$ git init`
 
-5. Configurar o tema
+5. Escolher um tema
 
-    - na altura do repositório
+   - Escolher um tema no site: [themes.gohugo.io](http://themes.gohugo.io)
+   - Nesse tutorial, vamos usar o tema `Noteworthy`
 
-       `$ git init`
+6. Configurar o repositório do tema como submodule do seu repositório    
 
-    - setar o submodule da seguinte forma:
+    - Setar o submodule com o seguinte comando:
 
-      $ git submodule `<url>` `<destino>`
+      `$ git submodule add <url> <path>`
 
         Exemplo:
         `$ git submodule add https://github.com/kimcc/hugo-theme-noteworthy themes/noteworthy`
 
-6. Copiar todo o conteúdo da pasta **exampleSite** para a sua raiz
+7. Copiar todo o conteúdo da pasta **exampleSite** (que está dentro de `themes/noteworthy`) para a raiz do seu projeto (`meusite`)
 
-7. Editar `config.toml`
-   - Em `config.toml` alterar `theme = <nome do tema>`
-   - Em `config.toml` remover `themesDir = "../.."`
+   - OBS: isso ajudará a visualizar as possibilidades do tema, mas o conteúdo pode ser deletado mais tarde
 
-8. Visualizar site local
+8. Editar o arquivo de configuração `config.toml` da sua pasta `meusite`
+   - Adicionar (ou corrigir) `theme = <nome do tema>` com o nome do tema (no caso, `theme = "noteworthy"`)
+   - Remover `themesDir = "../.."` (se houver)
+   - Alterar `title`
+   - Preencher com as `urls` das páginas que você quiser que sejam exibidas
+   - Remover links das páginas que não deseja que sejam exibidas
+   - Alterar `description` para a mensagem que deseja que seja exibida no topo do site
+   - Promover outras alterações que desejar
+   
+9. Visualizar o site localmente
 
-   - `$ hugo server -D`
+   - Digitar o seguinte comando:
+      
+      `$ hugo server -D`
 
-     obs: cada post tem um campo `draft`, que pode ser `true` (caso seja ainda um rascunho) ou `false` (caso deva ser publicado). a flag -D força o conteúdo que é draft a ser publicado junto.
+     OBS: Cada post tem um campo `draft`, que pode ter o valor `true` (caso seja ainda um rascunho) ou `false` (caso deva ser publicado). A flag `-D` força o conteúdo que está sinalizado como draft a ser publicado junto. Caso não deseje que isso aconteça, utilizar o comando sem a flag `-D`.
 
-   - com um navegador, visitar o endereço `localhost:1313`
+   - Em seu navegador de preferência, visitar o endereço `localhost:1313` (ou o endereço que for informado no próprio terminal após rodar o comando acima)
 
-   - para parar, apertar `Ctrl + C`
+   - Para parar, apertar `Ctrl + C` no terminal
 
-9. Editar arquivo de configuração
+10. Criar seu primeiro post
 
-   - Título
-   - Outras infos
+    - Digitar o seguinte comando:
+   
+      `$ hugo new posts/primeiro-post.md`
+     
+    - Editar o arquivo que foi criado e adicionar o conteúdo que desejar
+    
+    - Repetir quantas vezes desejar
 
-10. Criar primeiro post
+11. Criar repositório no Git provider de sua preferência (nesse tutorial, estamos usando o [GitHub](http://github.com))
 
-     - `$ hugo new post/primeiro-post.md`
-     - inserir conteúdo dentro do arquivo que foi criado
-
-11. Criar repositório no [GitHub](http://github.com)
-
-    - não precisa ser público, pois daremos permissão ao Netlify mais tarde
+    - OBS: Não precisa ser público, pois daremos permissão de leitura ao Netlify mais tarde
 
 12. Fazer o commit do seu conteúdo na máquina
 
-    - `$ git status`
-    - `$ git add .`
-    - `$ git commit -m "<título do commit>"`
+    - Digitar os seguintes comandos:
+    
+       `$ git status` - para visualizar onde ocorreram alterações
+       
+       `$ git add .` - para adicionar as alterações à staging area
+       
+       `$ git commit -m "<título do commit>"` - para realizar o commit
+       
+     - OBS: caso precise de mais instruções sobre git, visitar [esse repo aqui](https://github.com/womenwhogocwb/oficina-git-github).
 
-13. Dar push no conteúdo do repo local pro remoto
+13. Dar push no conteúdo do repositório local para o remoto
 
-    - `$ git remote add origin https://github.com/<user>/<repo>.git`
-    - `$ git push -u origin master`
+    - Digitar os seguintes comandos:
 
-14. Criar um site dentro do Netlify
+      `$ git remote add origin https://github.com/<USER>/<REPO>.git` - pra adicionar sua origem remota
+      
+      `$ git push -u origin master` - para realizar o push
 
-    obs: caso não tenha uma conta, é só criar uma usando GitHub
+14. Criar um site dentro do [Netlify](https://www.netlify.com)
 
-    - Escolher Git provider
-    - Escolher Repositório
-    - Últimas configurações e build
+    OBS: caso não tenha uma conta, criar uma usando autenticação via GitHub
+
+    - No Netlify:
+
+      1) Escolher **Git provider**
+      2) Escolher o **repositório** no qual você trabalhou durante esse tutorial
+      3) Últimas configurações e build
 
 15. Publicar o site
 
-    - se for via Netlify, isso acontece como o 3º passo da sua configuração do novo site, dentro da própria plataforma.
+    - Via Netlify, isso acontece como o 3º passo da sua configuração do novo site, dentro da própria plataforma.
 
-      > obs: é possível que você receba um erro similar a esse aqui
+      > OBS: é possível que você receba um erro similar a esse aqui
       >
       >     ERROR <DATA> <HORA> NOTEWORTHY theme does not support Hugo version 0.54.0. Minimum version required is 0.55.2
       >
@@ -135,4 +182,12 @@
 
     - Em `Settings` -> `Domain management` -> `Domains` -> `Custom domains`
 
-18. Editar `baseURL` em `config.toml` conforme a URL do seu site
+18. Editar `baseURL` em `config.toml`
+ 
+    - Copiar a URL do seu site e colar no campo `baseURL`
+
+19. Realizar novo `push` no seu repositório remoto para que as alterações possam ser implementadas
+    
+20. **Pronto!** Seu site está no ar e disponível para você alterá-lo. Sugerimos deletar os posts que tenham sido copiados da pasta `exampleSite` do tema durante a construção.
+
+💡 Precisa de mais dicas? Dá uma olhada [aqui](https://gohugo.io/getting-started/quick-start/) (em inglês).
