@@ -1,12 +1,12 @@
 # Sites estáticos com framework Hugo
 
-Esse tutorial é um material de apoio da oficina [Sites estáticos com framework Hugo](https://www.meetup.com/Women-Who-Go-CWB/events/267913185/), realizada em Curitiba em 15/02/20, que teve como instrutora @knienkotter e como monitoras @amandabrbz e @erikacarvalho.
+Esse tutorial é um material de apoio da oficina [Sites estáticos com framework Hugo](https://www.meetup.com/Women-Who-Go-CWB/events/267913185/), realizada em Curitiba em 15/02/20, que teve como instrutora [@knienkotter](https://github.com/knienkotter) e como monitoras [@amandabrbz](https://github.com/amandabrbz) e [@erikacarvalho](https://github.com/erikacarvalho).
 
 Nossa ideia é disponibilizar o conteúdo online para que tanto quem esteve quanto quem não esteve presente na oficina possa se beneficiar do conteúdo.
 
 A versão atual compreende apenas as notas sobre **Hugo + Netlify**, mas planejamos adicionar em breve um passo-a-passo para publicação com **Hugo + GitHub Pages**.
 
-🥳 Divirta-se! 
+🥳 Divirta-se!
 
 ### Sites estáticos
 
@@ -14,7 +14,7 @@ A versão atual compreende apenas as notas sobre **Hugo + Netlify**, mas planeja
 
 Um site estático é entregue ao navegador da pessoa usuária exatamente da mesma forma que está armazenado, em contraste a sites dinâmicos.
 
-É baseado principalmente em HTML (__HyperText Markup Language__), que é uma "linguagem de marcação".
+É baseado principalmente em HTML (_HyperText Markup Language_), que é uma "linguagem de marcação".
 
 O documento HTML é interpretado pelo navegador, que o renderiza e exibe o conteúdo formatado.
 
@@ -95,7 +95,7 @@ Use o package manager da sua distro/de sua preferência, instruções adicionais
 
 1. **Checar versão do Hugo que está instalada**
  
-   - Isso permite verificar se a instalação ocorreu e dá a informação necessária para comparar com a "__Minimum Hugo Version__" que o tema precisa
+   - Isso permite verificar se a instalação ocorreu e dá a informação necessária para comparar com a "_Minimum Hugo Version_" que o tema precisa
 
    - Digite o seguinte comando:
      
@@ -108,7 +108,8 @@ Use o package manager da sua distro/de sua preferência, instruções adicionais
      `$ hugo new site meusite`
      
    - Se der certo, você deve receber a seguinte mensagem:
-     #### Congratulations! Your new Hugo site is created in <...>
+   
+     **Congratulations! Your new Hugo site is created in <...>**
 
 3. **Inicializar o repositório git**
 
@@ -135,7 +136,7 @@ Use o package manager da sua distro/de sua preferência, instruções adicionais
 
 6. **Trocar o arquivo de configuração**
 
-   - Copiar o arquivo `📄config.toml` da pasta `📂exampleSite` para a raiz do seu projeto (`📂meusite`)
+   - Copiar o arquivo 📄`config.toml` da pasta 📂`exampleSite` para a raiz do seu projeto (📂`meusite`)
    
    - Onde encontrar o arquivo:
    
@@ -144,14 +145,14 @@ Use o package manager da sua distro/de sua preferência, instruções adicionais
      └──📂themes    
         └──📂noteworthy
            └──📂exampleSite
-              └──📄 config.toml
+              └──📄config.toml
    ```
 
-   - OBS: Se quiser iniciar seu site com conteúdos para visualizar melhor as possibilidades do tema, copie também a pasta 📂**content**. Você poderá excluir o conteúdo que não é seu mais tarde.
+   - OBS: Se quiser iniciar seu site com conteúdos para visualizar melhor as possibilidades do tema, copie também a pasta 📂`content`. Você poderá excluir o conteúdo que não é seu mais tarde.
 
 7. **Editar o arquivo de configuração que foi copiado**
    
-   - No arquivo `📄config.toml` que foi copiado para a sua pasta `📂meusite`, promover as seguintes alterações: 
+   - No arquivo 📄`config.toml` que foi copiado para a sua pasta 📂`meusite`, promover as seguintes alterações: 
 
       - Adicionar (ou corrigir) `theme = <nome do tema>` com o nome do tema (no caso, `theme = "noteworthy"`)
       - Remover `themesDir = "../.."` (se houver)
@@ -166,7 +167,7 @@ Use o package manager da sua distro/de sua preferência, instruções adicionais
    - Primeiro, você deve visitar o endereço que deseja utilizar para verificar se recebe a mensagem `Not Found` - o que indica que o subdomínio está disponível. O endereço será: `https://<NOMEESCOLHIDO>.netlify.com`
       1) Se não estiver disponível, tente outro até que o retorno seja `Not Found`
       2) Se estiver disponível, siga para a linha abaixo
-   - Colocar a URL do seu site no campo `baseURL` em `📄config.toml`, dessa forma:
+   - Colocar a URL do seu site no campo `baseURL` em 📄`config.toml`, dessa forma:
       ```
       baseURL = "https://<NOMEESCOLHIDO>.netlify.com"
       ```
@@ -183,12 +184,12 @@ Use o package manager da sua distro/de sua preferência, instruções adicionais
       📂meusite    
         └──📂content    
            └──📂posts
-              └──📄 primeiro-post.md
+              └──📄primeiro-post.md
       ```
     
       - OBS: Cada post tem um campo `draft`, que pode ter o valor `true` (caso seja ainda um rascunho) ou `false` (caso deva ser publicado). Edite o campo para sinalizar a publicação do post.
 
-    - Repetir quantas vezes desejar para adicionar posts
+    - Repetir quantas vezes desejar para adicionar posts (usando nomes diferentes para os arquivos)
    
 10. **Visualizar o site localmente** (para ver como está ficando 🤓)
 
@@ -214,7 +215,7 @@ Use o package manager da sua distro/de sua preferência, instruções adicionais
       [context.production.environment]
       HUGO_VERSION = "X.XX.X"
       ```
-      - OBS: no campo `HUGO_VERSION` deve ser colocado o valor indicado como "__Minimum Hugo Version__" na página do tema. A que foi usada nesse tutorial, para essa versão do **Noteworthy** foi `0.55.2`
+      - OBS: no campo `HUGO_VERSION` deve ser colocado o valor indicado como "_Minimum Hugo Version_" na página do tema. A que foi usada nesse tutorial, para essa versão do **Noteworthy** foi `0.55.2`
       
      - É possível encontrar mais sobre isso [aqui](https://gohugo.io/hosting-and-deployment/hosting-on-netlify/)
             
@@ -281,6 +282,8 @@ Use o package manager da sua distro/de sua preferência, instruções adicionais
     Sugerimos deletar os posts que tenham sido copiados da pasta `exampleSite` do tema durante a construção.
     
     Lembre-se que sempre que promover alterações no seu repositório local você deve realizar um novo `push` no seu repositório remoto para que as alterações possam ser implementadas!
+
+-----
 
 💡 Precisa de mais dicas? Dá uma olhada [aqui](https://gohugo.io/categories/getting-started) (em inglês).
 
