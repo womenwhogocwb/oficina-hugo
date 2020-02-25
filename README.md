@@ -65,7 +65,21 @@ O documento HTML é interpretado pelo navegador, que o renderiza e exibe o conte
 
 #### Windows
 
-As instruções podem ser encontradas [aqui](https://gohugo.io/getting-started/installing/#windows)
+Faça download do executável do Hugo [Windows 64 bits](https://github.com/gohugoio/hugo/releases/download/v0.64.0/hugo_0.64.0_Windows-64bit.zip) 
+     ou [Windows 32 bits](https://github.com/gohugoio/hugo/releases/download/v0.64.0/hugo_0.64.0_Windows-32bit.zip)
+ (este executável não é um instalador, é necessário fazer a instalação manual)
+     
+Descompacte o conteúdo do ZIP para a pasta `C:\Hugo\bin` (pode ser na pasta que preferir)
+     
+Copie o caminho onde está o executável `hugo.exe` para configurar seu sistema para reconhecer o comando Hugo. Para isso você deve configurar a variável de ambiente `PATH` seguindo os passos abaixo:
+     
+> 1. Em Iniciar > Pesquisar, procure e selecione: Sistema (Painel de Controle)
+> 2. Clique no link Configurações avançadas do sistema.
+> 3. Clique em Variáveis de Ambiente. Na seção Variáveis do Sistema, localize a variável de ambiente `PATH` e selecione-a. Clique em Editar. Se a variável de ambiente `PATH` não existir, clique em Novo.
+> 4. Na janela Editar Variável de Sistema (ou Nova Variável de Sistema), especifique o valor (`C:\hugo\bin\`) da variável de ambiente `PATH`. Clique em OK. Feche todas as janelas restantes clicando em OK.
+> 5. Reabra o terminal e execute `$ hugo version`.
+     
+Outras formas de instalação podem ser encontradas [aqui](https://gohugo.io/getting-started/installing/#windows)
 
 #### Mac OS
 
